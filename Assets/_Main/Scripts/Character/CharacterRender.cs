@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CHARACTERS
+namespace CHARACTER
 {
     // Contains data and functions to a layer composing a sprite character
     public class CharacterRender
@@ -14,7 +14,7 @@ namespace CHARACTERS
         public CanvasGroup CurrentCanvasGroup => Renderer.GetComponent<CanvasGroup>();
 
         // reference to the character manager - we use it to manage coroutines from here
-        private CustomerManager CharacterManager => CustomerManager.Instance;
+        private CharacterManager CharacterManager => CharacterManager.Instance;
 
         // coroutine to fade in/out the layers
         private Coroutine coroutineTransitioningLayer = null;

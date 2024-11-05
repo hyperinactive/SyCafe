@@ -13,4 +13,11 @@ namespace CHARACTER
             Name = name;
         }
     }
+
+    public enum CharacterType
+    {
+        Regular,
+        Asilum,
+        Server
+    }
 }
