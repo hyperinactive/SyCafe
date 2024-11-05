@@ -8,6 +8,8 @@ namespace CHARACTER
     {
         public static CharacterManager Instance { get; private set; }
         private readonly Dictionary<string, Character> Characters = new Dictionary<string, Character>();
+        private CharacterConfigSO config => GameSystem.Instance.Config;
+
 
         private void Awake()
         {
@@ -40,7 +42,7 @@ namespace CHARACTER
             // and have it use the same config as the original character
 
             // TODO: add configs
-            //characterInfo.config = config.GetConfig(characterInfo.castingName);
+            characterInfo.config = config.GetConfig(characterInfo.name);
 
             // TODO: add prefabs
             //characterInfo.prefab = GetPrefabForCharacter(characterInfo.castingName);

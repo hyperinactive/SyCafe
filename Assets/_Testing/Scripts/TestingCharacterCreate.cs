@@ -18,7 +18,7 @@ public class TestingCharacterCreate : MonoBehaviour
 
     void CreateCharacterViaManager()
     {
-        var noku = CharacterManager.Instance.CreateCharacter("noku");
+        var noku = CharacterManager.Instance.CreateCharacter("Noku");
         Debug.Log(noku);
     }
 }

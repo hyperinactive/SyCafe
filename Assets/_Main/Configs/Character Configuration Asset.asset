@@ -16,8 +16,8 @@ MonoBehaviour:
   - Name: Noku
     Type: 2
   - Name: Syrex
-    Type: 0
-  - Name: Hyper
+    Type: 2
+  - Name: Hyperinactive
     Type: 1
   - Name: Bob
     Type: 0

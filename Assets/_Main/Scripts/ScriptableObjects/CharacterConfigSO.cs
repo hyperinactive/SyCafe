@@ -12,13 +12,11 @@ namespace CHARACTER
 
         public CharacterConfigData GetConfig(string characterName)
         {
-            characterName = characterName.ToLower();
-
             for (int i = 0; i < characters.Length; i++)
             {
                 CharacterConfigData data = characters[i];
 
-                if (string.Equals(characterName, characters[i].Name))
+                if (string.Equals(characterName.ToLower(), characters[i].Name.ToLower()))
                 {
                     // returning data cause of this reason
                     // when returning values and working with scriptable objects we have to keep in mind persistance of scriptable object data
