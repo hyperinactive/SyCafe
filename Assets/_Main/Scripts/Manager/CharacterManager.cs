@@ -8,8 +8,19 @@ namespace CHARACTER
     {
         public static CharacterManager Instance { get; private set; }
         private readonly Dictionary<string, Character> Characters = new Dictionary<string, Character>();
-        private CharacterConfigSO config => GameSystem.Instance.Config;
 
+        // give the character container through the unity editor
+        // CUSTOMER ----------------------------------------------------------------------------------
+        [SerializeField]
+        private RectTransform _customerContainer = null;
+        public RectTransform customerContainter => _customerContainer;
+
+        // SERVER ------------------------------------------------------------------------------------
+        [SerializeField]
+        private RectTransform _serverContainer = null;
+        public RectTransform serverContainer => _serverContainer;
+
+        private CharacterConfigSO config => GameSystem.Instance.Config;
 
         private void Awake()
         {
@@ -68,17 +79,17 @@ namespace CHARACTER
             {
                 case (CharacterType.Server):
                     {
-                        return new Server(info.name);
+                        return new Server(info.name, info.config, null);
                     }
                 case (CharacterType.Regular):
                     {
-                        return new RegularCustomer(info.name);
+                        return new RegularCustomer(info.name, info.config, null);
                     }
 
                 case (CharacterType.Asilum):
                     {
                         // TODO: read the order from the config
-                        return new AsilumCustomer(info.name, Order.Muffin);
+                        return new AsilumCustomer(info.name, info.config, null);
                     }
             }
             return null;

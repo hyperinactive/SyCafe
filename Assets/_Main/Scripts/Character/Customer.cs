@@ -1,3 +1,6 @@
+using CHARACTERS;
+using UnityEngine;
+
 namespace CHARACTER
 {
     public abstract class Customer : Character
@@ -5,7 +8,7 @@ namespace CHARACTER
 
         public Order Order;
 
-        public Customer(string name) : base(name)
+        public Customer(string name, CharacterConfigData config, GameObject prefab) : base(name, config, prefab)
         {
         }
     }

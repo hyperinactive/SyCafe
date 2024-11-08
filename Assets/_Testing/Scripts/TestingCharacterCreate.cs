@@ -11,9 +11,9 @@ public class TestingCharacterCreate : MonoBehaviour
 
     void CreateCharacterClass()
     {
-        RegularCustomer customer = new RegularCustomer("Bob");
-        AsilumCustomer bobbi = new AsilumCustomer("Bobbi", Order.Muffin);
-        Server noku = new Server("Noku");
+        //RegularCustomer customer = new RegularCustomer("Bob");
+        //AsilumCustomer bobbi = new AsilumCustomer("Bobbi", Order.Muffin);
+        //Server noku = new Server("Noku");
     }
 
     void CreateCharacterViaManager()

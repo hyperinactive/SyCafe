@@ -1,3 +1,4 @@
+using CHARACTERS;
 using UnityEngine;
 
 namespace CHARACTER
@@ -7,7 +8,7 @@ namespace CHARACTER
 
         public JobType Job;
 
-        public Server(string name) : base(name)
+        public Server(string name, CharacterConfigData config, GameObject prefab) : base(name, config, prefab)
         {
             Debug.Log($"Spawned Server: [{name}]");
         }
