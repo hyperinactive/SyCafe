@@ -28,3 +28,9 @@ MonoBehaviour:
   - Name: Karma
     Type: 1
     Order: 0
+  - Name: Nova
+    Type: 1
+    Order: 1
+  - Name: Snow
+    Type: 1
+    Order: 3

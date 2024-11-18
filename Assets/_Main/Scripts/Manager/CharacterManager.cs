@@ -13,14 +13,14 @@ namespace CHARACTER
         // CUSTOMER ----------------------------------------------------------------------------------
         [SerializeField]
         private RectTransform _customerContainer = null;
-        public RectTransform customerContainter => _customerContainer;
+        public RectTransform CustomerContainter => _customerContainer;
 
         // SERVER ------------------------------------------------------------------------------------
         [SerializeField]
         private RectTransform _serverContainer = null;
-        public RectTransform serverContainer => _serverContainer;
+        public RectTransform ServerContainer => _serverContainer;
 
-        private CharacterConfigSO config => GameSystem.Instance.Config;
+        private CharacterConfigSO Config => GameSystem.Instance.Config;
 
         private void Awake()
         {
@@ -46,17 +46,17 @@ namespace CHARACTER
         private CharacterInfo GetCharacterInfo(string characterName)
         {
             CharacterInfo characterInfo = new CharacterInfo();
-            characterInfo.name = characterName;
+            characterInfo.Name = characterName;
 
             // we try to load in both the config and the prefab for the character name
             // update: now using casting name, cause we're trying to create a character under a different name
             // and have it use the same config as the original character
 
             // TODO: add configs
-            characterInfo.config = config.GetConfig(characterInfo.name);
+            characterInfo.Config = Config.GetConfig(characterInfo.Name);
 
             // TODO: add prefabs
-            //characterInfo.prefab = GetPrefabForCharacter(characterInfo.castingName);
+            characterInfo.Prefab = GetPrefabForCharacter(characterInfo.Name, characterInfo.Config.Type);
 
             // TODO: add character folder paths
             //characterInfo.rootCharacterFolder = FormatCharacterPath(characterRootPath, characterInfo.castingName);
@@ -68,39 +68,66 @@ namespace CHARACTER
         private Character CreateCharacterFromInfo(CharacterInfo info)
         {
             // TODO: for now, cause the configs aren't being loaded
-            if (info.config == null)
+            if (info.Config == null)
             {
-                info.config = new CharacterConfigData();
-                info.config.Name = info.name;
-                info.config.Type = CharacterType.Regular;
+                info.Config = new CharacterConfigData();
+                info.Config.Name = info.Name;
+                info.Config.Type = CharacterType.Regular;
             }
 
-            switch (info.config.Type)
+            switch (info.Config.Type)
             {
                 case (CharacterType.Server):
                     {
-                        return new Server(info.name, info.config, null);
+                        return new Server(info.Name, info.Config, null);
                     }
                 case (CharacterType.Regular):
                     {
-                        return new RegularCustomer(info.name, info.config, null);
+                        return new RegularCustomer(info.Name, info.Config, null);
                     }
 
                 case (CharacterType.Asilum):
                     {
                         // TODO: read the order from the config
-                        return new AsilumCustomer(info.name, info.config, null);
+                        return new AsilumCustomer(info.Name, info.Config, null);
                     }
             }
             return null;
         }
 
+        private GameObject GetPrefabForCharacter(string characterName, CharacterType type)
+        {
+            string folderPath = "Characters/";
+            switch (type)
+            {
+                case CharacterType.Server:
+                    folderPath += $"Servers/{characterName}";
+                    break;
+                case CharacterType.Regular:
+                    // TODO: pick some prefab at random
+                    folderPath += "Customers/Regulars/Customer_1";
+                    break;
+                case CharacterType.Asilum:
+                    folderPath += $"Customers/Asilum/{characterName}";
+                    break;
+            }
+
+            GameObject prefab = Resources.Load<GameObject>(folderPath);
+            if (prefab != null)
+            {
+                return prefab;
+            }
+
+            Debug.LogWarning($"[{characterName}] not found.");
+            return null;
+        }
+
         private class CharacterInfo
         {
-            public string name = "";
-            public CharacterConfigData config = null;
-            public GameObject prefab = null;
-            public string rootCharacterFolder = "";
+            public string Name = "";
+            public CharacterConfigData Config = null;
+            public GameObject Prefab = null;
+            public string RootCharacterFolder = "";
         }
     }
 }
