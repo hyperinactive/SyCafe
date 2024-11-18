@@ -9,7 +9,8 @@ namespace CHARACTER
         public RegularCustomer(string name, CharacterConfigData config, GameObject prefab) : base(name, config, prefab)
         {
             Debug.Log($"Spawned RegularCustomer: [{name}]");
-            Order = GenerateOrder();
+            this.Order = GenerateOrder();
+            Debug.Log($"Generated Order: [{this.Order}]");
         }
 
         private Order GenerateOrder()

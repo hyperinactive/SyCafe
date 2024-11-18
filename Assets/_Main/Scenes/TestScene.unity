@@ -1394,6 +1394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f56fba9608979240bb7692341a95d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _customerContainer: {fileID: 1003518897}
+  _serverContainer: {fileID: 894288034}
 --- !u!224 &1820489058 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6619857454064456228, guid: ccf52c037d0def94697c1c1743b0fc1c, type: 3}

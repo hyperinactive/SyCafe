@@ -15,9 +15,16 @@ MonoBehaviour:
   characters:
   - Name: Noku
     Type: 2
+    Order: 0
   - Name: Syrex
     Type: 2
-  - Name: Hyperinactive
+    Order: 0
+  - Name: Hyper
     Type: 1
-  - Name: Bob
-    Type: 0
+    Order: 0
+  - Name: Bobbi
+    Type: 1
+    Order: 0
+  - Name: Karma
+    Type: 1
+    Order: 0

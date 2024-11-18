@@ -10,6 +10,7 @@ namespace CHARACTER
 
         public Customer(string name, CharacterConfigData config, GameObject prefab) : base(name, config, prefab)
         {
+            this.Order = config.Order;
         }
     }
 
@@ -28,13 +29,4 @@ namespace CHARACTER
         Sandwich,
         Muffin
     }
-
-    //nova chocolate
-    //snow chocolate
-    //suz x aka jiji is vanilla
-    //me biscuit
-    //hyper carrot
-    //bobby sponge
-    //Karma lemon pie
-    //Syrex apple pie
 }

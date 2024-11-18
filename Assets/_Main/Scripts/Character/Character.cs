@@ -1,37 +1,39 @@
 using CHARACTERS;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CHARACTER
 {
     public abstract class Character
     {
-        public string name;
+        public string Name;
 
-        public RectTransform root = null;
-        public CharacterConfigData config;
-        public Animator animator;
+        public RectTransform Root = null;
+        public CharacterConfigData Config;
+        public Animator Animator;
 
-        private CharacterManager characterManagerInstance => CharacterManager.Instance;
+        private CharacterManager CharacterManagerInstance => CharacterManager.Instance;
 
         // TODO: add a render
 
+
         protected Character(string name, CharacterConfigData config, GameObject prefab)
         {
-            this.name = name;
-            this.config = config;
+            this.Name = name;
+            this.Config = config;
 
             if (prefab != null)
             {
                 // instantiate prefab
-                GameObject prefabObject = Object.Instantiate(prefab, characterManagerInstance.customerContainter);
+                GameObject prefabObject = Object.Instantiate(prefab, CharacterManagerInstance.customerContainter);
                 prefabObject.name = name;
 
                 // making sure the prefab is active
                 prefabObject.SetActive(true);
                 // grabs the root object
-                root = prefabObject.GetComponent<RectTransform>();
+                Root = prefabObject.GetComponent<RectTransform>();
                 // grabs the animator from the children
-                animator = root.GetComponentInChildren<Animator>();
+                Animator = Root.GetComponentInChildren<Animator>();
             }
         }
     }

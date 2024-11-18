@@ -10,6 +10,8 @@ namespace CHARACTERS
 
         public CharacterType Type;
 
+        public Order Order;
+
         // due to this class being used in scriptable objects, we're providing a copy of the date as to not mess with the original scriptable object
         // Copy is just a utility function
         public CharacterConfigData Copy()
@@ -17,6 +19,7 @@ namespace CHARACTERS
             CharacterConfigData configData = new CharacterConfigData();
             configData.Name = Name;
             configData.Type = Type;
+            configData.Order = Order;
             return configData;
         }
 
@@ -27,6 +30,7 @@ namespace CHARACTERS
                 CharacterConfigData characterConfigData = new CharacterConfigData();
                 characterConfigData.Name = "";
                 characterConfigData.Type = CharacterType.Regular;
+                characterConfigData.Order = Order.Muffin;
                 return characterConfigData;
             }
         }
