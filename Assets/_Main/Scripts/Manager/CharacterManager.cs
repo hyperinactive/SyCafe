@@ -79,17 +79,17 @@ namespace CHARACTER
             {
                 case (CharacterType.Server):
                     {
-                        return new Server(info.Name, info.Config, null);
+                        return new Server(info.Name, info.Config, info.Prefab);
                     }
                 case (CharacterType.Regular):
                     {
-                        return new RegularCustomer(info.Name, info.Config, null);
+                        return new RegularCustomer(info.Name, info.Config, info.Prefab);
                     }
 
                 case (CharacterType.Asilum):
                     {
                         // TODO: read the order from the config
-                        return new AsilumCustomer(info.Name, info.Config, null);
+                        return new AsilumCustomer(info.Name, info.Config, info.Prefab);
                     }
             }
             return null;
